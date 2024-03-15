@@ -1,63 +1,45 @@
 function validateSyntax() {
-    let input = document.getElementById('petInput').value;
-
-    // Declaration and assignment of empty strings
-
-    let result1 = '';        
-    let result2 = '';
-    let result3 = '';
-    let result4 = '';
-    let result = '';
-
-     // Checks the validity of the first four characters which are "pet_"
-   
-    if (input[0] == "p" && input[1] == "e" && input[2] == "t" && input[3] == "_") {
-        result1 = "part 1 good";
+    let input = document.getElementById('petInput').value;  
+    let check1 = '';        
+    let check2 = '';
+    let check3 = '';
+    let check4 = '';
+    let result = '';  
+    const pattern = /^[a-zA-Z]*$/;   
+    
+    if (input.slice(0,4) == "pet_") {     // Checks the validity of the first four characters which are "pet_"
+        check1 = "okay";
     }
     else {
-        result1 = "part 1 not good";        
-    } 
-   
-     // Checks the validity of the birth year
+        check1 = "not okay"; 
+    }      
 
-    if (!isNaN(input[4]) && !isNaN(input[5]) && !isNaN(input[6]) && !isNaN(input[7]) ) {
-        result2 = 'part 2 good';
+    if (!isNaN(input[4]) && !isNaN(input[5]) && !isNaN(input[6]) && !isNaN(input[7]) ) {    // Checks the validity of the birth year
+        check2 = 'okay';
     } else {
-        result2 = 'part 2 not good';
-    }
-    
-    // Checks the validity of the name of the pet
+        check2 = 'not okay';
+    }                    
 
-    const pattern = /^[a-zA-Z]*$/;
-    const substring = input.slice(8);     //Slices the input string from index 8 to the last index
-    Boolean3 = pattern.test(substring);
-
-    if (Boolean3 == true) {
-        result3 = 'part 3 good';
+    if (pattern.test(input.slice(8)) == true) {   // Checks the validity of the name of the pet
+        check3 = 'okay';
     }
     else {
-        result3 = 'part 3 not good';
-    }  
+        check3 = 'not okay';
+    }      
 
-    // Checks the validity of the first character of the birth year.
-
-    if (input[4] == 1 || input[4] == 2) {
-        result4 = 'part 4 good'
+    if (input[4] == 1 || input[4] == 2) {        // Checks the validity of the first character of the birth year.
+        check4 = 'okay'
     }
     else {
-        result4 = 'part 4 not good'
-    }
-    
-    // Compares results from all four validations and gives final result
+        check4 = 'not okay'
+        alert('Birth year has to start with a 1 or a 2.')
+    }   
 
-    if (result1 == "part 1 good" && result2 == 'part 2 good' && result3 == 'part 3 good' && result4 == 'part 4 good') {
+    if (check1 == "okay" && check2 == 'okay' && check3 == 'okay' && check4 == 'okay') {  // Compares all four checks and gives final result
         result = "Valid syntax" + '\u{1F7E2}'
     }
     else {
-        result = "Invalid syntax" + '\u{1F534}'
+        result = "Invalid syntax" + '\u{1F534}'        
     }
-
     document.getElementById('result').innerText = result;
 }
-
-
