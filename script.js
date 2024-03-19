@@ -5,7 +5,7 @@ function validateSyntax() {
     let check3 = '';
     let check4 = '';
     let result = '';  
-    const pattern = /^[a-zA-Z]*$/;   
+    const pattern = /^[a-zA-Z]+$/; 
     
     if (input.slice(0,4) == "pet_") {     // Checks the validity of the first four characters which are "pet_"
         check1 = "okay";
